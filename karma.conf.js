@@ -34,10 +34,11 @@ module.exports = function(config) {
       'client/components/**/*.html'
     ],
 
+    reporters: ['progress','coverage'],//,'dots','junit'],
+    
     preprocessors: {
-      '**/*.jade': 'ng-jade2js',
-      '**/*.html': 'html2js',
-      '**/*.coffee': 'coffee',
+      'client/app/**/*.js': ['coverage'],
+      'client/components/**/*.js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {
@@ -76,6 +77,27 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
+   
+    plugins : [
+            'karma-jasmine',
+            'karma-coverage',
+            'karma-phantomjs-launcher'
+            ],
+/*
+    junitReporter : {
+      outputFile: 'test_out/unit.xml',
+      suite: 'unit'
+    },
+*//*
+    coverageReporter: {
+      type : 'cobertura',
+      dir : 'coverage/jasmine'
+    }*/
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage'
+    }
+
   });
 };

@@ -6,7 +6,8 @@ angular.module('solumApp')
       .state('login', {
         url: '/login',
         templateUrl: 'app/account/login/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        landing: true
       })
       .state('signup', {
         url: '/signup',

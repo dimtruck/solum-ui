@@ -10,7 +10,7 @@ angular.module('solumApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/login');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
@@ -20,6 +20,7 @@ angular.module('solumApp', [
     return {
       // Add authorization token to headers
       request: function (config) {
+        console.log('test auth request');
         config.headers = config.headers || {};
         if ($cookieStore.get('token')) {
           config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
@@ -42,12 +43,23 @@ angular.module('solumApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
-    // Redirect to login if route requires auth and you're not logged in
+  .run(function ($rootScope, $location, Auth, App) {
     $rootScope.$on('$stateChangeStart', function (event, next) {
+      //check if user is logged in
       Auth.isLoggedInAsync(function(loggedIn) {
+        console.log('state change',loggedIn, next);
         if (next.authenticate && !loggedIn) {
           $location.path('/login');
+        } else if (next.landing && loggedIn) {
+          //$location.path('/internal')
+          //check if apps exist
+          App.getAppsAsync(function(data){
+            if(data.apps && data.apps.length > 0){
+              $location.path('/apps');
+            } else {
+              $location.path('/get_started');
+            }
+          })
         }
       });
     });

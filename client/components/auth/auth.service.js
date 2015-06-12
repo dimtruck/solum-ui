@@ -21,7 +21,7 @@ angular.module('solumApp')
         var deferred = $q.defer();
 
         $http.post('/auth/local', {
-          email: user.email,
+          username: user.username,
           password: user.password
         }).
         success(function(data) {
@@ -50,49 +50,6 @@ angular.module('solumApp')
       },
 
       /**
-       * Create a new user
-       *
-       * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional
-       * @return {Promise}
-       */
-      createUser: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return User.save(user,
-          function(data) {
-            $cookieStore.put('token', data.token);
-            currentUser = User.get();
-            return cb(user);
-          },
-          function(err) {
-            this.logout();
-            return cb(err);
-          }.bind(this)).$promise;
-      },
-
-      /**
-       * Change password
-       *
-       * @param  {String}   oldPassword
-       * @param  {String}   newPassword
-       * @param  {Function} callback    - optional
-       * @return {Promise}
-       */
-      changePassword: function(oldPassword, newPassword, callback) {
-        var cb = callback || angular.noop;
-
-        return User.changePassword({ id: currentUser._id }, {
-          oldPassword: oldPassword,
-          newPassword: newPassword
-        }, function(user) {
-          return cb(user);
-        }, function(err) {
-          return cb(err);
-        }).$promise;
-      },
-
-      /**
        * Gets all available info on authenticated user
        *
        * @return {Object} user
@@ -114,6 +71,7 @@ angular.module('solumApp')
        * Waits for currentUser to resolve before checking if user is logged in
        */
       isLoggedInAsync: function(cb) {
+        console.log(currentUser);
         if(currentUser.hasOwnProperty('$promise')) {
           currentUser.$promise.then(function() {
             cb(true);
