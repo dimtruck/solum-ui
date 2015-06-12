@@ -59,7 +59,7 @@ angular.module('solumApp', [
             } else {
               $location.path('/get_started');
             }
-          })
+          });
         }
       });
     });

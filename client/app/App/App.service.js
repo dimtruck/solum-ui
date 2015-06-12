@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('solumApp')
-  .factory('App', function (Auth, $http, $q) {
-    var apps = [];
+  .factory('App', function (Auth, $http) {
+    //var apps = [];
 
     // Public API here
     return {
@@ -18,7 +18,7 @@ angular.module('solumApp')
         }).
         error(function(err){
           return cb(err);
-        })
+        });
       }
     };
   });
