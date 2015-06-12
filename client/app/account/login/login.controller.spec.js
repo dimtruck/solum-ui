@@ -83,7 +83,7 @@ describe('Controller: LoginCtrl', function () {
       q = _$q_;
       fakeForm = {};
       fakeAuth = {
-        login: function (mockObj) {
+        login: function () {
           deferred = q.defer();
           // Place the fake return object here
           deferred.resolve({ });
@@ -134,7 +134,7 @@ describe('Controller: LoginCtrl', function () {
       q = _$q_;
       fakeForm = {};
       fakeAuth = {
-        login: function (mockObj) {
+        login: function () {
           deferred = q.defer();
           // Place the fake return object here
           deferred.reject({ message: 'Boo' });
