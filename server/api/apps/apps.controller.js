@@ -87,7 +87,7 @@ exports.index = function (req, res) {
               'ERROR',
               'ERROR_CODE_DEPLOYMENT',
               'UNIT_TESTING_FAILED',
-              'READY'].indexOf(assembly[0].status) == -1) {
+              'READY'].indexOf(assembly[0].status) === -1) {
               statusQuery.start({
                 name: plans[p].name,
                 description: plans[p].description,
@@ -138,7 +138,7 @@ exports.deploy = function (req, res) {
 // Creates a new apps in the DB.
 exports.create = function (req, res) {
   var app = req.body.app;
-  if (req.query.action == 'create') {
+  if (req.query.action === 'create') {
     //post that data!
     var plan = {
       version: 1,
@@ -194,7 +194,7 @@ exports.create = function (req, res) {
         return handleError(res, { 'code': 500, 'message': 'App list retrieval failed' });
       }
     });
-  } else if (req.query.action == 'deploy') {
+  } else if (req.query.action === 'deploy') {
     //post that data!
     var assembly = {
       name: app.name,
@@ -341,22 +341,6 @@ function showApp(req, res) {
     return endpoint.region === "DFW"
   })[0].publicURL;
 
-  var log_options = {
-    url: cloudFilesUrl,
-    method: 'GET',
-    headers: {
-      'X-Auth-Token': req.user.raxToken
-    }
-  };
-
-  var heat_options = {
-    url: heatUrl + '/stacks',
-    method: 'GET',
-    headers: {
-      'X-Auth-Token': req.user.raxToken
-    }
-  };
-
 
   async.parallel({
     plan: function (callback) {
@@ -443,7 +427,7 @@ function showApp(req, res) {
             'ERROR',
             'ERROR_CODE_DEPLOYMENT',
             'UNIT_TESTING_FAILED',
-            'READY'].indexOf(app.status) == -1) {
+            'READY'].indexOf(app.status) === -1) {
             statusQuery.start({
               name: app.name,
               description: app.description,
