@@ -16,7 +16,8 @@ exports.register = function(socket) {
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('apps:save', doc);
+  console.log('on save', doc.plan_id)
+  socket.emit('app_status:' + doc.plan_id + ':save', doc);
 }
 
 function onRemove(socket, doc, cb) {

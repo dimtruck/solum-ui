@@ -6,6 +6,7 @@ angular.module('solumApp')
       .state('apps', {
         url: '/apps',
         templateUrl: 'app/apps/apps.html',
-        controller: 'AppsCtrl'
+        controller: 'AppsCtrl',
+        authenticate: true
       });
   });

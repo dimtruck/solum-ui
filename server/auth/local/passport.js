@@ -39,13 +39,14 @@ exports.setup = function (User, config) {
                 switch (response.statusCode) {
                   case 200:
                     console.log('response is good');
-                    console.log(JSON.parse(body).access.token);
+                    console.log(JSON.parse(body));
                     var newUser = new User({
                       username: username,
                       password: password,
                       raxToken: JSON.parse(body).access.token.id,
                       raxTokenExpiry: JSON.parse(body).access.token.expires,
-                      raxTenant: JSON.parse(body).access.token.tenant.id
+                      raxTenant: JSON.parse(body).access.token.tenant.id,
+                      catalog: JSON.parse(body).access.serviceCatalog
                     });
                     newUser.provider = 'local';
                     newUser.role = 'user';

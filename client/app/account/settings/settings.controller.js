@@ -2,7 +2,7 @@
 
 angular.module('solumApp')
   .controller('SettingsCtrl', function ($scope, User, Auth) {
-    $scope.errors = {};
+    /*$scope.errors = {};
 
     $scope.changePassword = function(form) {
       $scope.submitted = true;
@@ -17,5 +17,5 @@ angular.module('solumApp')
           $scope.message = '';
         });
       }
-		};
+		};*/
   });

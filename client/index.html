@@ -13,9 +13,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <link rel="stylesheet" href="bower_components/canon-bootstrap/build/css/canon-bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/canon/dist/canon.min.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -24,11 +24,24 @@
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/appCard/appCard.css">
       <link rel="stylesheet" href="app/apps/apps.css">
+      <link rel="stylesheet" href="app/create/create.css">
+      <link rel="stylesheet" href="app/detail/detail.css">
+      <link rel="stylesheet" href="app/getStarted/getStarted.css">
       <link rel="stylesheet" href="app/get_started/get_started.css">
       <link rel="stylesheet" href="app/internal/internal.css">
-      <link rel="stylesheet" href="app/login.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/mainApp/mainApp.css">
+      <link rel="stylesheet" href="app/mainAppDetail/mainAppDetail.css">
+      <link rel="stylesheet" href="app/mainAppHeader/mainAppHeader.css">
+      <link rel="stylesheet" href="app/mainAppStats/mainAppStats.css">
+      <link rel="stylesheet" href="app/mainCodeDetail/mainCodeDetail.css">
+      <link rel="stylesheet" href="app/mainInfrastructureDetail/mainInfrastructureDetail.css">
+      <link rel="stylesheet" href="app/mainMenu/mainMenu.css">
+      <link rel="stylesheet" href="app/mainParameterDetail/mainParameterDetail.css">
+      <link rel="stylesheet" href="app/parametersApp/parametersApp.css">
+      <link rel="stylesheet" href="app/workflowApp/workflowApp.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
@@ -58,7 +71,7 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/jquery/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -67,6 +80,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/canon/dist/canon.min.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -75,20 +89,40 @@
         <script src="app/app.js"></script>
           <!-- injector:js -->
           <script src="app/App/App.service.js"></script>
+          <script src="app/AppStatusFilter/AppStatusFilter.filter.js"></script>
+          <script src="app/LanguagePack/LanguagePack.service.js"></script>
+          <script src="app/LanguagePackFilter/LanguagePackFilter.filter.js"></script>
+          <script src="app/NameFilter/NameFilter.filter.js"></script>
+          <script src="app/StatusFilter/StatusFilter.filter.js"></script>
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
-          <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/appCard/appCard.directive.js"></script>
           <script src="app/apps/apps.controller.js"></script>
           <script src="app/apps/apps.js"></script>
+          <script src="app/create/create.controller.js"></script>
+          <script src="app/create/create.js"></script>
+          <script src="app/detail/detail.controller.js"></script>
+          <script src="app/detail/detail.js"></script>
+          <script src="app/getStarted/getStarted.directive.js"></script>
           <script src="app/get_started/get_started.controller.js"></script>
           <script src="app/get_started/get_started.js"></script>
           <script src="app/internal/internal.controller.js"></script>
           <script src="app/internal/internal.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/mainApp/mainApp.directive.js"></script>
+          <script src="app/mainAppDetail/mainAppDetail.directive.js"></script>
+          <script src="app/mainAppHeader/mainAppHeader.directive.js"></script>
+          <script src="app/mainAppStats/mainAppStats.directive.js"></script>
+          <script src="app/mainCodeDetail/mainCodeDetail.directive.js"></script>
+          <script src="app/mainInfrastructureDetail/mainInfrastructureDetail.directive.js"></script>
+          <script src="app/mainMenu/mainMenu.directive.js"></script>
+          <script src="app/mainParameterDetail/mainParameterDetail.directive.js"></script>
+          <script src="app/parametersApp/parametersApp.directive.js"></script>
+          <script src="app/workflowApp/workflowApp.directive.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>

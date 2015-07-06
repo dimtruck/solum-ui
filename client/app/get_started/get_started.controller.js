@@ -2,5 +2,5 @@
 
 angular.module('solumApp')
   .controller('GetStartedCtrl', function ($scope) {
-    $scope.message = 'Hello';
+        console.log($scope.apps);
   });
