@@ -16,7 +16,8 @@ var UserSchema = new Schema({
   salt: String,
   raxToken: String,
   raxTokenExpiry: String,
-  raxTenant: String
+  raxTenant: String,
+  catalog: Object
 });
 
 /**

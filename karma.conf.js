@@ -34,7 +34,7 @@ module.exports = function(config) {
       'client/components/**/*.html'
     ],
 
-    reporters: ['progress','coverage'],//,'dots','junit'],
+    reporters: ['progress','coverage','junit','dots'],
     
     preprocessors: {
       'client/app/**/*.js': ['coverage'],
@@ -61,7 +61,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:
@@ -82,14 +82,15 @@ module.exports = function(config) {
     plugins : [
             'karma-jasmine',
             'karma-coverage',
-            'karma-phantomjs-launcher'
+            'karma-phantomjs-launcher',
+            'karma-junit-reporter'
             ],
-/*
+
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
     },
-*//*
+/*
     coverageReporter: {
       type : 'cobertura',
       dir : 'coverage/jasmine'
